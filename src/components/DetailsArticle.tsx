@@ -28,9 +28,9 @@ const DetailsArticle = () => {
     mYFetchArticle();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const published = new Date(selectArticle?.published_at).toLocaleDateString()
+  
   return (
-    <Container>
+    selectArticle && (<Container>
         <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">Epic-Articles</Navbar.Brand>
@@ -46,17 +46,17 @@ const DetailsArticle = () => {
       </Navbar>
       <Row className="justify-content-center my-5">
         <Col xs={10} >
-          <h1>{selectArticle?.title}</h1>
-          <img src={selectArticle?.image_url} alt="poster article" className="w-100"  />
-          <p> Published: {selectArticle?.published_at} </p>
-          <p>Summary: {selectArticle?.summary}</p>
-          <p>Updated at : {selectArticle?.updated_at}</p>
-          <p>Launches: {selectArticle?.launches[0] ? selectArticle?.launches[0].provider : "None" }</p>
-          <p>Events: {selectArticle?.events[0] ? selectArticle?.events[0].provider : "None"}</p>
+          <h1>{selectArticle.title}</h1>
+          <img src={selectArticle.image_url} alt="poster article" className="w-100"  />
+          <p> Published: {new Date(selectArticle.published_at).toLocaleDateString()} </p>
+          <p>Summary: {selectArticle.summary}</p>
+          <p>Updated at : {new Date(selectArticle.updated_at).toLocaleDateString() }</p>
+          <p>Launches: {selectArticle.launches[0] ? selectArticle.launches[0].provider : "None" }</p>
+          <p>Events: {selectArticle.events[0] ? selectArticle.events[0].provider : "None"}</p>
 
         </Col>
       </Row>
-    </Container>
+    </Container>)
   );
 };
 
